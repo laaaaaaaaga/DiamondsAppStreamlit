@@ -7,6 +7,7 @@ startTime = datetime.now()
 # import znanych nam bibliotek
 
 filename = "x"
+model = ""
 # model = pickle.load(open(filename, 'rb'))
 # otwieramy wcześniej wytrenowany model
 
