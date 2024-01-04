@@ -4,15 +4,19 @@ import pickle
 from datetime import datetime
 
 startTime = datetime.now()
-# import znanych nam bibliotek
+# import
 
-filename = "x"
-model = ""
-# model = pickle.load(open(filename, 'rb'))
-# otwieramy wcześniej wytrenowany model
+filename = "model.pkl"
+model=pickle.load(open(filename, 'rb'))
+
+encoderfile = "ordinal_encoder.pkl"
+encoder=pickle.load(open(encoderfile,'rb'))
+
+scalerfile = "scaler.pkl"
+scaler=pickle.load(open(scalerfile,'rb'))
 
 color_d = {0: "D", 1: "E",2: "F", 3: "G",4: "H", 5: "I"}
-cut_d = {0: "Ideal", 1: "Premium",2: "Very Good", 3: "Good",4: "Fair"}
+cut_d = {0: "Ideal", 1: "Premium",2: "Very_Good", 3: "Good",4: "Fair"}
 clarity_d = {0: "SI1", 1: "SI2",2: "VS1", 3: "VS2",4: "VVS1", 5: "VVS2", 6: "I1", 7: "IF"}
 def main():
     st.set_page_config(page_title="Koszt Diamentu?")
@@ -28,9 +32,9 @@ def main():
         st.title("Ile te diaxy mają kosztować?")
 
     with left:
-        cut_radio = st.radio("Cięcie", list(cut_d.keys()), index=0, format_func=lambda x:cut_d[x])
-        color_slider = st.radio("Kolor", list(color_d.keys()), index=1, format_func=lambda x:color_d[x])
-        clarity_slider = st.radio("Przejrzystość", list(clarity_d.keys()), index=2, format_func=lambda x:clarity_d[x])
+        cut_radio = st.radio("Cięcie", list(cut_d.keys()), index=0, format_func=lambda x:cut_d[x],horizontal=True)
+        color_radio = st.radio("Kolor", list(color_d.keys()), index=1, format_func=lambda x:color_d[x], horizontal=True)
+        clarity_radio = st.radio("Przejrzystość", list(clarity_d.keys()), index=2, format_func=lambda x:clarity_d[x])
         carat_slider = st.slider("Karaty", value=100, min_value=0, max_value=200)
     with right:
         depth_slider = st.slider("Głębia", min_value=0, max_value=500, step=10)
