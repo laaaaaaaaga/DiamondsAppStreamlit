@@ -43,7 +43,7 @@ def main():
         y_slider = st.slider("y", min_value=1.00, max_value=10.00, value=5.00)
         z_slider = st.slider("z", min_value=1.00, max_value=6.00, value=3.00)
 
-    data = np.array([])
+    data = np.array([carat_slider,cut_radio,color_radio,clarity_radio,depth_slider,table_slider,x_slider,y_slider,z_slider])
     data = data.reshape(1,-1)
     #    data = np.array([])
     #    data = data.reshape(-1,1)
